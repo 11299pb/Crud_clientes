@@ -12,6 +12,6 @@
 
         }
     </style>
-    <title>App de clientes</title>
+    <title>Aplicacion de clientes</title>
 </head>
 <body>
