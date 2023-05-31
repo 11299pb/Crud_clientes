@@ -1,9 +1,9 @@
 <?php
-require '../../modelos/clientes.php';
+require '../../modelos/cliente.php';
     try {
-        $clientes = new clientes($_GET);
+        $cliente = new Cliente($_GET);
 
-        $clientes = $clientes->buscar();
+        $cliente = $cliente->buscar();
         // echo "<pre>";
         // var_dump($clientess[0]['clientes_ID']);
         // echo "</pre>";
@@ -17,20 +17,20 @@ require '../../modelos/clientes.php';
 ?>
 <?php include_once '../../includes/header.php'?>
     <div class="container">
-        <h1 class="text-center">Modificar clientess</h1>
+        <h1 class="text-center">Modificar clientes</h1>
         <div class="row justify-content-center">
             <form action="/CRUD_CLIENTES/controladores/clientes/modificar.php" method="POST" class="col-lg-8 border bg-light p-3">
-                <input type="hidden" name="clientes_id" value="<?= $clientess[0]['clientes_ID'] ?>" >
+                <input type="hidden" name="cliente_id" value="<?= $cliente[0]['CLIENTE_ID'] ?>" >
                 <div class="row mb-3">
                     <div class="col">
                         <label for="cliente_nombre">Nombre del clientes</label>
-                        <input type="text" name="cliente_nombre" id="cliente_nombre" class="form-control" value="<?= $clientess[0]['clientes_NOMBRE'] ?>">
+                        <input type="text" name="cliente_nombre" id="cliente_nombre" class="form-control" value="<?= $cliente[0]['CLIENTE_NOMBRE'] ?>">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
                         <label for="cliente_nit">Nit del cliente</label>
-                        <input type="number" step="0.01" min="0" name="cliente_nit" id="cliente_nit" class="form-control" value="<?= $clientess[0]['clientes_NIT'] ?>">
+                        <input type="text" name="cliente_nit" id="cliente_nit" class="form-control" value="<?= $cliente[0]['CLIENTE_NIT'] ?>">
                     </div>
                 </div>
                 <div class="row mb-3">

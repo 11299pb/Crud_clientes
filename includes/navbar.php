@@ -10,18 +10,18 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/CRUD_CLIENTES/vistas/ventas/index.php">Ventas</a>
+                    <a class="nav-link" aria-current="page" href="/CRUD_CLIENTES/Vistas/clientes/index.php">Ventas</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Productos
+                        clientes
                     </a>
                     <ul class="dropdown-menu bg-dark">
                         <li class="nav-item">
-                            <a class="nav-link" href="/CRUD_CLIENTES/vistas/productos/index.php">CLIENTES</a>
+                            <a class="nav-link" href="/CRUD_CLIENTES/Vistas/clientes/index.php">CLIENTES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/CRUD_CLIENTES/vistas/productos/buscar.php">Buscar Clientes</a>
+                            <a class="nav-link" href="/CRUD_CLIENTES/Vistas/clientes/buscar.php">Buscar Clientes</a>
                         </li>
                     </ul>
                 </li>

@@ -1,9 +1,9 @@
 <?php
-require '../../modelos/clientes.php';
+require '../../modelos/cliente.php';
 try {
-    $clientes = new clientes($_GET);
+    $cliente = new cliente($_GET);
     
-    $clientess = $clientes->buscar();
+    $clientes = $cliente->buscar();
     // echo "<pre>";
     // var_dump($clientess);
     // echo "</pre>";
@@ -35,18 +35,19 @@ try {
                             <th>NO. </th>
                             <th>NOMBRE</th>
                             <th>NIT</th>
-                            <th>SITUACION</th>
+                            <th>MODIFICAR</th>
+                            <th>ELIMINAR</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if(count($clientes) > 0):?>
-                        <?php foreach($clientes as $key => $clientes) : ?>
+                        <?php foreach($clientes as $key => $cliente) : ?>
                         <tr>
                             <td><?= $key + 1 ?></td>
-                            <td><?= $clientes['clientes_NOMBRE'] ?></td>
-                            <td><?= $clientes['clientes_PRECIO'] ?></td>
-                            <td><a class="btn btn-warning w-100" href="/CRUD_CLIENTES/vistas/clientes/modificar.php?clientes_id=<?= $clientes['clientes_ID']?>">Modificar</a></td>
-                            <td><a class="btn btn-danger w-100" href="/CRUD_CLIENTES/controladores/clientes/eliminar.php?clientes_id=<?= $clientes['clientes_ID']?>">Eliminar</a></td>
+                            <td><?= $cliente['CLIENTE_NOMBRE'] ?></td>
+                            <td><?= $cliente['CLIENTE_NIT'] ?></td>
+                            <td><a class="btn btn-warning w-100" href="/CRUD_CLIENTES/Vistas/clientes/modificar.php?cliente_id=<?= $cliente['CLIENTE_ID']?>">Modificar</a></td>
+                            <td><a class="btn btn-danger w-100" href="/CRUD_CLIENTES/controladores/clientes/eliminar.php?cliente_id=<?= $cliente['CLIENTE_ID']?>">Eliminar</a></td>
                         </tr>
                         <?php endforeach ?>
                         <?php else :?>
@@ -60,7 +61,7 @@ try {
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-4">
-                <a href="/CRUD_CLIENTES/vistas/clientes/buscar.php" class="btn btn-info w-100">Volver al formulario</a>
+                <a href="/CRUD_CLIENTES/Vistas/clientes/buscar.php" class="btn btn-info w-100">Volver al formulario</a>
             </div>
         </div>
     </div>

@@ -6,14 +6,14 @@
             <form action="/CRUD_CLIENTES/controladores/clientes/buscar.php" method="GET" class="col-lg-8 border bg-light p-3">
                 <div class="row mb-3">
                     <div class="col">
-                        <label for="clientes_nombre">Nombre del cliente</label>
-                        <input type="text" name="clientes_nombre" id="clientes_nombre" class="form-control">
+                        <label for="cliente_nombre">Nombre del cliente</label>
+                        <input type="text" name="cliente_nombre" id="cliente_nombre" class="form-control">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label for="clientes_nit">Nit del cliente</label>
-                        <input type="number" step="0.01" min="0" name="clientes_nit" id="clientes_nit" class="form-control">
+                        <label for="cliente_nit">Nit del cliente</label>
+                        <input type="text" name="cliente_nit" id="cliente_nit" class="form-control">
                     </div>
                 </div>
                 <div class="row mb-3">
