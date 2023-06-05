@@ -1,17 +1,23 @@
 <?php
-require '../../modelos/cliente.php';
+require '../../modelos/Producto.php';
+
+
+if($_POST['producto_nombre'] != '' && $_POST['producto_precio']  != '' && $_POST['producto_id'] != ''){
+
 
 
     try {
-        $cliente = new cliente ($_GET);
-        $resultado = $cliente->eliminar();
+        $producto = new Producto($_POST);
+        $resultado = $producto->modificar();
 
     } catch (PDOException $e) {
         $error = $e->getMessage();
     } catch (Exception $e2){
         $error = $e2->getMessage();
     }
-
+}else{
+    $error = "Debe llenar todos los datos";
+}
 
 
 // if($resultado){
@@ -36,7 +42,7 @@ require '../../modelos/cliente.php';
             <div class="col-lg-6">
                 <?php if($resultado): ?>
                     <div class="alert alert-success" role="alert">
-                        Eliminado exitosamente!
+                        Modificado exitosamente!
                     </div>
                 <?php else :?>
                     <div class="alert alert-danger" role="alert">
@@ -48,10 +54,9 @@ require '../../modelos/cliente.php';
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <a href="/CRUD_CLIENTES/controladores/clientes/buscar.php" class="btn btn-info">Volver al formulario</a>
+                <a href="/CRUD_CLIENTES/controladores/productos/buscar.php?producto_nombre=<?= $_POST['producto_nombre'] ?>" class="btn btn-info">Volver al formulario</a>
             </div>
         </div>
     </div>
 </body>
 </html>
-

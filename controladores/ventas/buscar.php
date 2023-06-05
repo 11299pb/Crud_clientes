@@ -1,13 +1,16 @@
 <?php
-require '../../modelos/cliente.php';
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+require_once '../../modelos/Venta.php';
 try {
-    $cliente = new cliente($_GET);
+    $_GET['venta_fecha'] = date('Y-m-d', strtotime($_GET['venta_fecha']));
+    $venta = new Venta($_GET);
     
-    $clientes = $cliente->buscar();
+    $ventas = $venta->buscar();
     // echo "<pre>";
-    // var_dump($clientess);
+    // var_dump($ventas);
     // echo "</pre>";
-    // exit;
     // $error = "NO se guardó correctamente";
 } catch (PDOException $e) {
     $error = $e->getMessage();
@@ -23,7 +26,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Resultados</title>
+    <title>Resultado de ventas</title>
 </head>
 <body>
     <div class="container">
@@ -33,26 +36,24 @@ try {
                     <thead class="table-dark">
                         <tr>
                             <th>NO. </th>
-                            <th>NOMBRE</th>
-                            <th>NIT</th>
-                            <th>MODIFICAR</th>
-                            <th>ELIMINAR</th>
+                            <th>CLIENTE</th>
+                            <th>FECHA</th>
+                            <th>DETALLE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(count($clientes) > 0):?>
-                        <?php foreach($clientes as $key => $cliente) : ?>
+                        <?php if(count($ventas) > 0):?>
+                        <?php foreach($ventas as $key => $venta) : ?>
                         <tr>
                             <td><?= $key + 1 ?></td>
-                            <td><?= $cliente['CLIENTE_NOMBRE'] ?></td>
-                            <td><?= $cliente['CLIENTE_NIT'] ?></td>
-                            <td><a class="btn btn-warning w-100" href="/CRUD_CLIENTES/Vistas/clientes/modificar.php?cliente_id=<?= $cliente['CLIENTE_ID']?>">Modificar</a></td>
-                            <td><a class="btn btn-danger w-100" href="/CRUD_CLIENTES/controladores/clientes/eliminar.php?cliente_id=<?= $cliente['CLIENTE_ID']?>">Eliminar</a></td>
+                            <td><?= $venta['CLIENTE_NOMBRE'] ?></td>
+                            <td><?= $venta['VENTA_FECHA'] ?></td>
+                            <td><a class="btn btn-info w-100" href="/crudphp18may2023/vistas/ventas/detalle.php?venta_id=<?= $venta['VENTA_ID']?>">VER DETALLE</a></td>
                         </tr>
                         <?php endforeach ?>
                         <?php else :?>
                             <tr>
-                                <td colspan="3">NO EXISTEN REGISTROS</td>
+                                <td colspan="4">NO EXISTEN REGISTROS</td>
                             </tr>
                         <?php endif?>
                     </tbody>
@@ -61,7 +62,7 @@ try {
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-4">
-                <a href="/CRUD_CLIENTES/Vistas/clientes/buscar.php" class="btn btn-info w-100">Volver al formulario</a>
+                <a href="/crudphp18may2023/vistas/ventas/buscar.php" class="btn btn-info w-100">Volver al formulario</a>
             </div>
         </div>
     </div>

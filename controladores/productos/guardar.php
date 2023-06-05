@@ -1,15 +1,15 @@
 <?php
-require '../../modelos/cliente.php';
+require '../../modelos/Producto.php';
 
 
-if($_POST['cliente_nombre'] != '' && $_POST['cliente_nit']  != '' && $_POST['cliente_id'] != ''){
+if($_POST['producto_nombre'] != '' && $_POST['producto_precio'] != ''){
 
 
 
     try {
-        $cliente = new Cliente($_POST);
-        $resultado = $cliente->modificar();
-
+        $producto = new Producto($_POST);
+        $resultado = $producto->guardar();
+        $error = "NO se guardó correctamente";
     } catch (PDOException $e) {
         $error = $e->getMessage();
     } catch (Exception $e2){
@@ -42,7 +42,7 @@ if($_POST['cliente_nombre'] != '' && $_POST['cliente_nit']  != '' && $_POST['cli
             <div class="col-lg-6">
                 <?php if($resultado): ?>
                     <div class="alert alert-success" role="alert">
-                        Modificado exitosamente!
+                        Guardado exitosamente!
                     </div>
                 <?php else :?>
                     <div class="alert alert-danger" role="alert">
@@ -54,7 +54,7 @@ if($_POST['cliente_nombre'] != '' && $_POST['cliente_nit']  != '' && $_POST['cli
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <a href="/CRUD_CLIENTES/controladores/clientes/buscar.php?cliente_nombre=<?= $_POST['cliente_nombre'] ?>" class="btn btn-info">Volver al formulario</a>
+                <a href="/CRUD_CLIENTES/vistas/productos/index.php" class="btn btn-info">Volver al formulario</a>
             </div>
         </div>
     </div>
